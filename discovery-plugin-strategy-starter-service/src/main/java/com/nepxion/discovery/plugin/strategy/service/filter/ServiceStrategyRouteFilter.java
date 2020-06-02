@@ -9,6 +9,10 @@ package com.nepxion.discovery.plugin.strategy.service.filter;
  * @version 1.0
  */
 
+/**
+ * 核心接口
+ *
+ */
 public interface ServiceStrategyRouteFilter {
     String getRouteVersion();
 

@@ -32,6 +32,15 @@ import com.nepxion.discovery.plugin.strategy.constant.StrategyConstant;
 import com.nepxion.discovery.plugin.strategy.service.adapter.FeignStrategyInterceptorAdapter;
 import com.nepxion.discovery.plugin.strategy.service.filter.ServiceStrategyRouteFilter;
 
+
+/**
+ * feign 调用时的拦截器.
+ *
+ * 主要做两件事情:
+ * 1. 获取当前服务本身的 header 头信息. 从 PluginAdapter (注册中心 + cache)
+ * 2. 获取需要传递到下一个服务的 header 信息. 从 serviceStrategyContextHolder 和 ServiceStrategyRouteFilter 获取
+ *
+ */
 public class FeignStrategyInterceptor extends AbstractStrategyInterceptor implements RequestInterceptor {
     private static final Logger LOG = LoggerFactory.getLogger(FeignStrategyInterceptor.class);
 

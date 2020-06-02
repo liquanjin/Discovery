@@ -31,6 +31,11 @@ import com.nepxion.discovery.plugin.framework.loadbalance.weight.StrategyMapWeig
 import com.netflix.loadbalancer.Server;
 import com.netflix.loadbalancer.ZoneAvoidanceRule;
 
+/**
+ * loadBalance 核心 处理类
+ *
+ *
+ */
 public class ZoneAvoidanceRuleDecorator extends ZoneAvoidanceRule {
     private static final Logger LOG = LoggerFactory.getLogger(ZoneAvoidanceRuleDecorator.class);
 

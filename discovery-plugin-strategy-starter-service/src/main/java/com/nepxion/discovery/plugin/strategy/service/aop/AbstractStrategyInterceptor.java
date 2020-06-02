@@ -95,10 +95,23 @@ public abstract class AbstractStrategyInterceptor {
         System.out.println("--------------------------------------------------");
     }
 
+    /**
+     * 需要关注 和包含的 header 属性.
+     * 主要是两部分: n-d-开头 和 自定义配置的部分.
+     * @param headerName
+     * @return
+     */
     protected boolean isHeaderContains(String headerName) {
         return headerName.startsWith(DiscoveryConstant.N_D_PREFIX) || requestHeaderList.contains(headerName);
     }
 
+    /**
+     * 在满足 isHeaderContains 的基础上,排除 inner 部分的header .
+     * 主要作用,筛选出 A->B时; 需要传递到B的header, 也就是 applyOuterHeader 的header
+     *
+     * @param headerName
+     * @return
+     */
     protected boolean isHeaderContainsExcludeInner(String headerName) {
         return isHeaderContains(headerName) &&
                 !StringUtils.equals(headerName, DiscoveryConstant.N_D_SERVICE_GROUP) &&

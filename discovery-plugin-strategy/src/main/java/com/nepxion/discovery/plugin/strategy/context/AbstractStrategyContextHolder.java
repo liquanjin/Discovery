@@ -10,6 +10,8 @@ package com.nepxion.discovery.plugin.strategy.context;
  */
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.nepxion.discovery.common.constant.DiscoveryConstant;
@@ -19,6 +21,7 @@ import com.nepxion.discovery.plugin.strategy.wrapper.StrategyWrapper;
 public abstract class AbstractStrategyContextHolder implements PluginContextHolder, StrategyContextHolder {
     @Autowired
     protected StrategyWrapper strategyWrapper;
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractStrategyContextHolder.class);
 
     @Override
     public String getContext(String name) {
@@ -28,6 +31,7 @@ public abstract class AbstractStrategyContextHolder implements PluginContextHold
     @Override
     public String getContextRouteVersion() {
         String versionValue = getContext(DiscoveryConstant.N_D_VERSION);
+        LOG.info("正在call AbstractStrategyContextHolder #getContextRouteVersion. getContext() versionValue:{}",versionValue);
         if (StringUtils.isEmpty(versionValue)) {
             versionValue = getRouteVersion();
         }

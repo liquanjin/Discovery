@@ -9,6 +9,10 @@ package com.nepxion.discovery.plugin.framework.context;
  * @version 1.0
  */
 
+/**
+ *  核心接口
+ * plugin 上下文 接口
+ */
 public interface PluginContextHolder {
     String getContext(String name);
 

@@ -9,6 +9,10 @@ package com.nepxion.discovery.plugin.strategy.context;
  * @version 1.0
  */
 
+/**
+ * 核心 接口.
+ * 策略上下文 接口
+ */
 public interface StrategyContextHolder {
     String getHeader(String name);
 

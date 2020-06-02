@@ -33,6 +33,9 @@ import com.nepxion.discovery.plugin.framework.loadbalance.weight.MapWeightRandom
 import com.nepxion.discovery.plugin.strategy.condition.StrategyCondition;
 import com.nepxion.discovery.plugin.strategy.context.StrategyContextHolder;
 
+/**
+ * 获取 策略 核心接口
+ */
 public class StrategyWrapper {
     @Autowired
     protected PluginAdapter pluginAdapter;

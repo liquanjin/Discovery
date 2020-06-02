@@ -5,22 +5,26 @@ package com.nepxion.discovery.plugin.strategy.service.context;
  * <p>Description: Nepxion Discovery</p>
  * <p>Copyright: Copyright (c) 2017-2050</p>
  * <p>Company: Nepxion</p>
+ *
  * @author Haojun Ren
  * @author Fan Yang
  * @version 1.0
  */
 
-import java.util.Map;
-
+import com.nepxion.discovery.common.util.JsonUtil;
+import com.nepxion.discovery.plugin.strategy.context.AbstractStrategyContextHolder;
+import com.nepxion.discovery.plugin.strategy.service.filter.ServiceStrategyRouteFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import sun.rmi.runtime.Log;
 
-import com.nepxion.discovery.plugin.strategy.context.AbstractStrategyContextHolder;
-import com.nepxion.discovery.plugin.strategy.service.filter.ServiceStrategyRouteFilter;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ServiceStrategyContextHolder extends AbstractStrategyContextHolder {
     private static final Logger LOG = LoggerFactory.getLogger(ServiceStrategyContextHolder.class);
@@ -31,6 +35,7 @@ public class ServiceStrategyContextHolder extends AbstractStrategyContextHolder 
     public ServletRequestAttributes getRestAttributes() {
         RequestAttributes requestAttributes = RestStrategyContext.getCurrentContext().getRequestAttributes();
         if (requestAttributes == null) {
+            LOG.info(" RestStrategyContext.getCurrentContext() requestAttributes is null. value:{}",requestAttributes);
             requestAttributes = RequestContextHolder.getRequestAttributes();
         }
 
@@ -43,12 +48,20 @@ public class ServiceStrategyContextHolder extends AbstractStrategyContextHolder 
 
     @Override
     public String getHeader(String name) {
+        LOG.info(" RestStrategyContext.getCurrentContext() value in get header. value:{}",RestStrategyContext.getCurrentContext());
         ServletRequestAttributes attributes = getRestAttributes();
         if (attributes == null) {
             LOG.warn("The ServletRequestAttributes object is lost for thread switched probably");
 
             return null;
         }
+        Enumeration<String> enumeration = attributes.getRequest().getHeaderNames();
+        Map<String, String> map = new HashMap<>();
+        while (enumeration.hasMoreElements()) {
+            String key = enumeration.nextElement();
+            map.put(key, attributes.getRequest().getHeader(key));
+        }
+        LOG.info("ServiceStrategyContextHolder getHeader. print all headers:{}", JsonUtil.toJson(map));
 
         return attributes.getRequest().getHeader(name);
     }

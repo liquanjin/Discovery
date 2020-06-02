@@ -17,10 +17,13 @@ import com.netflix.loadbalancer.LoadBalancerStats;
 import com.netflix.loadbalancer.PredicateKey;
 import com.netflix.loadbalancer.Server;
 import com.netflix.loadbalancer.ZoneAvoidancePredicate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DiscoveryEnabledZoneAvoidancePredicate extends ZoneAvoidancePredicate {
     protected PluginAdapter pluginAdapter;
     protected DiscoveryEnabledAdapter discoveryEnabledAdapter;
+    private static final Logger LOG = LoggerFactory.getLogger(DiscoveryEnabledZoneAvoidancePredicate.class);
 
     public DiscoveryEnabledZoneAvoidancePredicate(IRule rule, IClientConfig clientConfig) {
         super(rule, clientConfig);
@@ -32,6 +35,7 @@ public class DiscoveryEnabledZoneAvoidancePredicate extends ZoneAvoidancePredica
 
     @Override
     public boolean apply(PredicateKey input) {
+        LOG.info("used DiscoveryEnabledZoneAvoidancePredicate apply");
         boolean enabled = super.apply(input);
         if (!enabled) {
             return false;

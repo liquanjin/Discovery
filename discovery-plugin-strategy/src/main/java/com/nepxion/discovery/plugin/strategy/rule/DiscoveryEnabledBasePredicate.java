@@ -14,10 +14,14 @@ import com.nepxion.discovery.plugin.strategy.adapter.DiscoveryEnabledAdapter;
 import com.netflix.loadbalancer.AbstractServerPredicate;
 import com.netflix.loadbalancer.PredicateKey;
 import com.netflix.loadbalancer.Server;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DiscoveryEnabledBasePredicate extends AbstractServerPredicate {
     protected PluginAdapter pluginAdapter;
     protected DiscoveryEnabledAdapter discoveryEnabledAdapter;
+
+    private static final Logger LOG = LoggerFactory.getLogger(DiscoveryEnabledBasePredicate.class);
 
     @Override
     public boolean apply(PredicateKey input) {
@@ -25,6 +29,7 @@ public class DiscoveryEnabledBasePredicate extends AbstractServerPredicate {
     }
 
     protected boolean apply(Server server) {
+        LOG.info("used DiscoveryEnabledBasePredicate apply");
         if (discoveryEnabledAdapter == null) {
             return true;
         }
