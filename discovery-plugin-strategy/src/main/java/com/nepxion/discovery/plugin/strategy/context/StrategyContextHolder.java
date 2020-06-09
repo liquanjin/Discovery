@@ -5,13 +5,16 @@ package com.nepxion.discovery.plugin.strategy.context;
  * <p>Description: Nepxion Discovery</p>
  * <p>Copyright: Copyright (c) 2017-2050</p>
  * <p>Company: Nepxion</p>
+ *
  * @author Haojun Ren
  * @version 1.0
  */
 
 /**
- * 核心 接口.
- * 策略上下文 接口
+ * 获取 configure 中配置的Discovery 信息
+ *
+ * 包括: version\region\address. 或包含weight 的路由策略;
+ *
  */
 public interface StrategyContextHolder {
     String getHeader(String name);

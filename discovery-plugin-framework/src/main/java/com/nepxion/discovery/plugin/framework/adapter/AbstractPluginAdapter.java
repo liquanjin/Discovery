@@ -24,6 +24,9 @@ import com.nepxion.discovery.plugin.framework.cache.PluginCache;
 import com.nepxion.discovery.plugin.framework.cache.RuleCache;
 import com.netflix.loadbalancer.Server;
 
+/**
+ *定义了基础的实现方式和逻辑, 仅需要从配置中心读取 Meta Data
+ */
 public abstract class AbstractPluginAdapter implements PluginAdapter {
     @Autowired
     protected Registration registration;

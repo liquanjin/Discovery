@@ -28,6 +28,10 @@ import com.nepxion.discovery.plugin.strategy.rule.DiscoveryEnabledZoneAvoidanceR
 import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.IRule;
 
+/***
+ * 注入 discovery 的IRule Bean.
+ *
+ */
 @Configuration
 @AutoConfigureBefore(RibbonClientConfiguration.class)
 public class StrategyLoadBalanceConfiguration {

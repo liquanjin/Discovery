@@ -10,7 +10,7 @@ package com.nepxion.discovery.plugin.strategy.service.filter;
  */
 
 /**
- * 核心接口
+ *  服务策略路由过滤器,面向的是 AbstractStrategyInterceptor 中的参数获取
  *
  */
 public interface ServiceStrategyRouteFilter {

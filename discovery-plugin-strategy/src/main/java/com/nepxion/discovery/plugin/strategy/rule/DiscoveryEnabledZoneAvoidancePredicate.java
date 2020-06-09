@@ -5,6 +5,7 @@ package com.nepxion.discovery.plugin.strategy.rule;
  * <p>Description: Nepxion Discovery</p>
  * <p>Copyright: Copyright (c) 2017-2050</p>
  * <p>Company: Nepxion</p>
+ *
  * @author Haojun Ren
  * @version 1.0
  */
@@ -12,15 +13,18 @@ package com.nepxion.discovery.plugin.strategy.rule;
 import com.nepxion.discovery.plugin.framework.adapter.PluginAdapter;
 import com.nepxion.discovery.plugin.strategy.adapter.DiscoveryEnabledAdapter;
 import com.netflix.client.config.IClientConfig;
-import com.netflix.loadbalancer.IRule;
-import com.netflix.loadbalancer.LoadBalancerStats;
-import com.netflix.loadbalancer.PredicateKey;
-import com.netflix.loadbalancer.Server;
-import com.netflix.loadbalancer.ZoneAvoidancePredicate;
+import com.netflix.loadbalancer.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 粘合 ZoneAvoidancePredicate 和 discovery 的节点选择的器
+ *
+ */
 public class DiscoveryEnabledZoneAvoidancePredicate extends ZoneAvoidancePredicate {
+    /**
+     * 未使用
+     */
     protected PluginAdapter pluginAdapter;
     protected DiscoveryEnabledAdapter discoveryEnabledAdapter;
     private static final Logger LOG = LoggerFactory.getLogger(DiscoveryEnabledZoneAvoidancePredicate.class);

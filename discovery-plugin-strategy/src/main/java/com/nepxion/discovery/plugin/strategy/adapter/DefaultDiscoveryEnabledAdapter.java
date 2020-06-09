@@ -9,13 +9,6 @@ package com.nepxion.discovery.plugin.strategy.adapter;
  * @version 1.0
  */
 
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.CollectionUtils;
-
 import com.nepxion.discovery.common.constant.DiscoveryConstant;
 import com.nepxion.discovery.common.util.JsonUtil;
 import com.nepxion.discovery.common.util.StringUtil;
@@ -23,7 +16,20 @@ import com.nepxion.discovery.plugin.framework.adapter.PluginAdapter;
 import com.nepxion.discovery.plugin.framework.context.PluginContextHolder;
 import com.nepxion.discovery.plugin.strategy.matcher.DiscoveryMatcherStrategy;
 import com.netflix.loadbalancer.Server;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 
+import java.util.List;
+import java.util.Map;
+
+/**
+ * choose server !!
+ *
+ * choose server node by configure discovery strategy and rule .
+ *
+ * if don't meet, retrue  false.
+ */
 public class DefaultDiscoveryEnabledAdapter implements DiscoveryEnabledAdapter {
     @Autowired(required = false)
     private List<DiscoveryEnabledStrategy> discoveryEnabledStrategyList;

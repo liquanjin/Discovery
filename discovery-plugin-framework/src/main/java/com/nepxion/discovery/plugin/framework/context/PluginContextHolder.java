@@ -10,8 +10,11 @@ package com.nepxion.discovery.plugin.framework.context;
  */
 
 /**
- *  核心接口
- * plugin 上下文 接口
+ *
+ * 获取上下文中预设的Discovery 信息.
+ * 包括: version\region\address. 或包含weight 的路由策略;
+ *
+ *
  */
 public interface PluginContextHolder {
     String getContext(String name);

@@ -34,14 +34,17 @@ import com.nepxion.discovery.plugin.strategy.condition.StrategyCondition;
 import com.nepxion.discovery.plugin.strategy.context.StrategyContextHolder;
 
 /**
- * 获取 策略 核心接口
+ *
+ * 根据 configuration 配置的内容 来得到 路由策略.version\region\address
+ *
  */
 public class StrategyWrapper {
+
+    /**
+     * 读取配置参数
+     */
     @Autowired
     protected PluginAdapter pluginAdapter;
-
-    @Autowired
-    protected StrategyContextHolder strategyContextHolder;
 
     @Autowired
     protected StrategyCondition strategyCondition;

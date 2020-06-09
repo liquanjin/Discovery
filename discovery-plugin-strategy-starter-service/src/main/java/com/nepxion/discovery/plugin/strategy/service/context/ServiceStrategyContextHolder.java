@@ -48,20 +48,11 @@ public class ServiceStrategyContextHolder extends AbstractStrategyContextHolder 
 
     @Override
     public String getHeader(String name) {
-        LOG.info(" RestStrategyContext.getCurrentContext() value in get header. value:{}",RestStrategyContext.getCurrentContext());
         ServletRequestAttributes attributes = getRestAttributes();
         if (attributes == null) {
             LOG.warn("The ServletRequestAttributes object is lost for thread switched probably");
-
             return null;
         }
-        Enumeration<String> enumeration = attributes.getRequest().getHeaderNames();
-        Map<String, String> map = new HashMap<>();
-        while (enumeration.hasMoreElements()) {
-            String key = enumeration.nextElement();
-            map.put(key, attributes.getRequest().getHeader(key));
-        }
-        LOG.info("ServiceStrategyContextHolder getHeader. print all headers:{}", JsonUtil.toJson(map));
 
         return attributes.getRequest().getHeader(name);
     }

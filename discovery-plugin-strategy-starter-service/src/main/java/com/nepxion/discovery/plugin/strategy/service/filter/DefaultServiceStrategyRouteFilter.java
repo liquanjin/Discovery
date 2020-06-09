@@ -13,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.nepxion.discovery.plugin.strategy.wrapper.StrategyWrapper;
 
+/**
+ * 默认实现 由 StrategyWrapper 实现.
+ */
 public class DefaultServiceStrategyRouteFilter extends AbstractServiceStrategyRouteFilter {
     @Autowired
     private StrategyWrapper strategyWrapper;

@@ -18,6 +18,12 @@ import com.nepxion.discovery.common.constant.DiscoveryConstant;
 import com.nepxion.discovery.plugin.framework.context.PluginContextHolder;
 import com.nepxion.discovery.plugin.strategy.wrapper.StrategyWrapper;
 
+/**
+ * 实现了两个 PluginContextHolder\StrategyContextHolder 接口.
+ *
+ * 内部进行了默认的逻辑实现. 所有 PluginContextHolder 接口的实现中,如果get value 为空,则返回 StrategyContextHolder的实现.
+ *
+ */
 public abstract class AbstractStrategyContextHolder implements PluginContextHolder, StrategyContextHolder {
     @Autowired
     protected StrategyWrapper strategyWrapper;

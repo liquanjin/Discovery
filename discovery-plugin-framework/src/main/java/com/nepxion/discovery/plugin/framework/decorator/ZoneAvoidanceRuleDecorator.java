@@ -32,7 +32,7 @@ import com.netflix.loadbalancer.Server;
 import com.netflix.loadbalancer.ZoneAvoidanceRule;
 
 /**
- * loadBalance 核心 处理类
+ * loadBalance 默认处理类.
  *
  *
  */

@@ -5,28 +5,34 @@ package com.nepxion.discovery.plugin.strategy.service.aop;
  * <p>Description: Nepxion Discovery</p>
  * <p>Copyright: Copyright (c) 2017-2050</p>
  * <p>Company: Nepxion</p>
+ *
  * @author Haojun Ren
  * @version 1.0
  */
-
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.nepxion.discovery.common.constant.DiscoveryConstant;
 import com.nepxion.discovery.common.util.StringUtil;
 import com.nepxion.discovery.plugin.framework.adapter.PluginAdapter;
 import com.nepxion.discovery.plugin.strategy.service.constant.ServiceStrategyConstant;
 import com.nepxion.discovery.plugin.strategy.service.context.ServiceStrategyContextHolder;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+
+/**
+ * 通用拦截器,feignClient 拦截器和Rest拦截器的抽象.
+ * logic:
+ * 1. 兼容 自定义的header 传递
+ * 2. 公共 trance 日志输出方法
+ *
+ */
 public abstract class AbstractStrategyInterceptor {
     @Autowired
     protected ConfigurableEnvironment environment;
@@ -42,6 +48,12 @@ public abstract class AbstractStrategyInterceptor {
 
     protected List<String> requestHeaderList = new ArrayList<String>();
 
+    /**
+     * 注入 需要discovery 传递的header
+     *
+     * @param contextRequestHeaders
+     * @param businessRequestHeaders
+     */
     public AbstractStrategyInterceptor(String contextRequestHeaders, String businessRequestHeaders) {
         if (StringUtils.isNotEmpty(contextRequestHeaders)) {
             requestHeaderList.addAll(StringUtil.splitToList(contextRequestHeaders.toLowerCase(), DiscoveryConstant.SEPARATE));
@@ -98,6 +110,7 @@ public abstract class AbstractStrategyInterceptor {
     /**
      * 需要关注 和包含的 header 属性.
      * 主要是两部分: n-d-开头 和 自定义配置的部分.
+     *
      * @param headerName
      * @return
      */

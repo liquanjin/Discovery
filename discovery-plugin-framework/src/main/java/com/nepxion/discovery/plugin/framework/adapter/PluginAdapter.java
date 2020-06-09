@@ -16,6 +16,15 @@ import org.springframework.cloud.client.ServiceInstance;
 import com.nepxion.discovery.common.entity.RuleEntity;
 import com.netflix.loadbalancer.Server;
 
+
+/**
+ * 获取配置Discovery 配置参数 接口
+ *
+ * 想要 读取Discovery配置的规则\ 策略都需要通过该接口获取.
+ * 包括几个方面:
+ * 1. 服务本身的配置信息:如 group\serviceId\version 等等. 这部分都根据注册中心Meta 的值动态读取.
+ * 2. 另外内部还有固定和动态的缓存对象. 所有version\ region 等参数的
+ */
 public interface PluginAdapter {
     String getGroupKey();
 
