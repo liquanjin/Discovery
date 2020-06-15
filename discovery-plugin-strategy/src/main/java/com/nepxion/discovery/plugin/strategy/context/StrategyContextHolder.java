@@ -11,9 +11,9 @@ package com.nepxion.discovery.plugin.strategy.context;
  */
 
 /**
- * 获取 configure 中配置的Discovery 信息
+ * 获取 configure 中配置 的Discovery 信息
  *
- * 包括: version\region\address. 或包含weight 的路由策略;
+ * 包括: version\region\address.\versionWeight\regionWeight 的路由策略;
  *
  */
 public interface StrategyContextHolder {

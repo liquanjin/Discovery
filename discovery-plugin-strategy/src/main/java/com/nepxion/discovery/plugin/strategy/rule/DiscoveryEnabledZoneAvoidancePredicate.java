@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * 核心
  * 粘合 ZoneAvoidancePredicate 和 discovery 的节点选择的器
  *
  */

@@ -24,11 +24,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * choose server !!
+ *  核心discovery 节点选择器.
+ * 决定choose 节点时,最后选择的节点是哪个
+ * discovery 执行 loadBalance时的节点选择器默认实现.
  *
- * choose server node by configure discovery strategy and rule .
+ * logic:
+ * 1. apply中 依次比较: version,region,address; 最后进入扩展节点选择器.
+ * 2.
  *
- * if don't meet, retrue  false.
  */
 public class DefaultDiscoveryEnabledAdapter implements DiscoveryEnabledAdapter {
     @Autowired(required = false)

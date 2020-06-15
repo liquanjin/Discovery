@@ -12,8 +12,10 @@ package com.nepxion.discovery.plugin.strategy.adapter;
 import com.netflix.loadbalancer.Server;
 
 /**
- * 节点选择 核心.
- * 单节点 选择比较器
+ * 单节点 选择比较器 扩充接口.
+ *
+ * 预留扩充接口.
+ *
  */
 public interface DiscoveryEnabledStrategy {
     boolean apply(Server server);

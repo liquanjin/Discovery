@@ -13,7 +13,8 @@ package com.nepxion.discovery.plugin.strategy.adapter;
 import com.netflix.loadbalancer.Server;
 
 /**
- * discovery 内部选择节点的入口接口.
+ * 核心discovery 节点选择器.
+ *  决定choose 节点时,最后选择的节点是哪个
  *
  */
 public interface DiscoveryEnabledAdapter {
